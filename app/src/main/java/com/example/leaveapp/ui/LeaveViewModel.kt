@@ -11,6 +11,7 @@ import com.example.leaveapp.data.LeaveRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -19,6 +20,12 @@ class LeaveViewModel(
 ) : ViewModel() {
 
     val allLeaves: StateFlow<List<LeaveRecord>> = repository.allLeaves
+        .map { list ->
+            list.sortedWith(
+                compareByDescending<LeaveRecord> { it.statusTag == "待休假" }
+                    .thenByDescending { it.id }
+            )
+        }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
     init {
@@ -33,7 +40,7 @@ class LeaveViewModel(
                         endTime = "2025-09-21 16:00",
                         duration = "0天3小时",
                         isRenew = false,
-                        reason = "校外：周末外出",
+                        reason = "校外：事假",
                         cancelledStatus = "",
                         statusTag = "待休假"
                     ),
@@ -44,7 +51,7 @@ class LeaveViewModel(
                         endTime = "2025-09-19 16:00",
                         duration = "0天5小时",
                         isRenew = false,
-                        reason = "校外：病假",
+                        reason = "校外：事假",
                         cancelledStatus = "已销假",
                         statusTag = "已销假"
                     ),

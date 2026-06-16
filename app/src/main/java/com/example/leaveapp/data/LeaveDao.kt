@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface LeaveDao {
 
-    @Query("SELECT * FROM leave_records ORDER BY id DESC")
+    @Query("SELECT * FROM leave_records")
     fun getAllLeaves(): Flow<List<LeaveRecord>>
 
     @Update

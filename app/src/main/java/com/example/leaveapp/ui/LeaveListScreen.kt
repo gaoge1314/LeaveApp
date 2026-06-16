@@ -135,6 +135,7 @@ fun LeaveListScreen(
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxSize()
+                        .background(Color.White)
                         .padding(paddingValues),
                     verticalArrangement = Arrangement.Top,
                 ) {
@@ -199,7 +200,7 @@ private fun LeaveCard(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(0.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
         Box(modifier = Modifier.fillMaxWidth()) {
             Column(
@@ -277,37 +278,33 @@ private fun LeaveCard(
                 }
             }
 
-            // 状态标签 - 旋转矩形
+            // 状态标签 - 右下角倾斜标签（贴卡片右下角，形状固定）
             val badgeColor = when {
                 record.statusTag.contains("待", ignoreCase = true) -> BadgePending
-                record.cancelledStatus.contains("已销假", ignoreCase = true) ||
-                record.statusTag.contains("已销假", ignoreCase = true) -> BadgeCancelled
                 else -> BadgeCancelled
             }
 
             Box(
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
-                    .offset(x = 18.dp, y = (-30).dp)
+                    .offset(x = 8.dp, y = (-20).dp)
+                    .width(66.dp)
+                    .height(22.dp)
                     .graphicsLayer(
-                        rotationZ = -37f,
-                        scaleX = 0.9f,
-                        scaleY = 1f,
+                        rotationZ = -32f,
                         transformOrigin = androidx.compose.ui.graphics.TransformOrigin(
                             pivotFractionX = 1f,
                             pivotFractionY = 1f
                         )
                     )
-                    .background(badgeColor)
-                    .padding(horizontal = 12.dp, vertical = 4.dp),
+                    .background(badgeColor),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = record.statusTag.ifEmpty {
-                        if (record.cancelledStatus.contains("已销假")) "已销假" else "待休假"
-                    },
+                    text = record.statusTag.ifEmpty { "待休假" },
                     color = Color.White,
-                    fontSize = 10.sp
+                    fontSize = 11.sp,
+                    letterSpacing = 0.5.sp
                 )
             }
         }
