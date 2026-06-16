@@ -1,6 +1,7 @@
 package com.example.leaveapp.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clipToBounds
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -202,7 +203,7 @@ private fun LeaveCard(
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
-        Box(modifier = Modifier.fillMaxWidth()) {
+        Box(modifier = Modifier.fillMaxWidth().clipToBounds()) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -278,7 +279,7 @@ private fun LeaveCard(
                 }
             }
 
-            // 状态标签 - 右下角倾斜标签（贴卡片右下角，形状固定）
+            // 状态标签 - 右下角45°丝带标签，右半边伸出卡片外被裁切
             val badgeColor = when {
                 record.statusTag.contains("待", ignoreCase = true) -> BadgePending
                 else -> BadgeCancelled
@@ -287,11 +288,11 @@ private fun LeaveCard(
             Box(
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
-                    .offset(x = 8.dp, y = (-20).dp)
-                    .width(66.dp)
-                    .height(22.dp)
+                    .offset(x = 36.dp, y = (-18).dp)
+                    .width(72.dp)
+                    .height(24.dp)
                     .graphicsLayer(
-                        rotationZ = -32f,
+                        rotationZ = -45f,
                         transformOrigin = androidx.compose.ui.graphics.TransformOrigin(
                             pivotFractionX = 1f,
                             pivotFractionY = 1f
