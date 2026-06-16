@@ -287,7 +287,7 @@ private fun LeaveCard(
             Box(
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
-                    .offset(x = 36.dp, y = (-18).dp)
+                    .offset(x = 16.dp, y = (-16).dp)
                     .width(72.dp)
                     .height(24.dp)
                     .graphicsLayer(
