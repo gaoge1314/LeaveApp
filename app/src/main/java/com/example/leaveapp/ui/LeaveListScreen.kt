@@ -1,7 +1,6 @@
 package com.example.leaveapp.ui
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clipToBounds
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -203,7 +202,7 @@ private fun LeaveCard(
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
-        Box(modifier = Modifier.fillMaxWidth().clipToBounds()) {
+        Box(modifier = Modifier.fillMaxWidth().graphicsLayer { clip = true }) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
