@@ -287,9 +287,9 @@ private fun LeaveCard(
             Box(
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
-                    .offset(x = 17.dp, y = 6.dp)
-                    .width(72.dp)
-                    .height(28.dp)
+                    .offset(x = (-30).dp, y = (-40).dp)
+                    .width(103.dp)
+                    .height(27.dp)
                     .graphicsLayer(
                         rotationZ = -45f,
                         transformOrigin = androidx.compose.ui.graphics.TransformOrigin(
