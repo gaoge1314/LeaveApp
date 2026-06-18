@@ -1,9 +1,11 @@
 package com.example.leaveapp.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -28,9 +30,6 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -54,10 +53,10 @@ import com.example.leaveapp.ui.theme.VpnTextColor
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LeaveListScreen(
-    viewModel: LeaveViewModel = viewModel(factory = LeaveViewModel.Factory)
+    viewModel: LeaveViewModel = viewModel(factory = LeaveViewModel.Factory),
+    onRenewClick: () -> Unit = {}
 ) {
     val leaves by viewModel.allLeaves.collectAsState()
-    var editingRecord by remember { mutableStateOf<LeaveRecord?>(null) }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Box(
@@ -121,7 +120,8 @@ fun LeaveListScreen(
                                 brush = Brush.horizontalGradient(
                                     colors = listOf(BottomBarStart, BottomBarEnd)
                                 )
-                            ),
+                            )
+                            .clickable { onRenewClick() },
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
@@ -140,10 +140,7 @@ fun LeaveListScreen(
                     verticalArrangement = Arrangement.Top,
                 ) {
                     items(leaves, key = { it.id }) { record ->
-                        LeaveCard(
-                            record = record,
-                            onClick = { editingRecord = record }
-                        )
+                        LeaveCard(record = record)
                         Spacer(modifier = Modifier.height(12.dp))
                     }
                     // last item spacing for bottom bar
@@ -175,28 +172,14 @@ fun LeaveListScreen(
                 }
             }
         }
-
-        // 编辑对话框
-        editingRecord?.let { record ->
-            EditLeaveDialog(
-                record = record,
-                onDismiss = { editingRecord = null },
-                onSave = { updated ->
-                    viewModel.updateLeave(updated)
-                    editingRecord = null
-                }
-            )
-        }
     }
 }
 
 @Composable
 private fun LeaveCard(
-    record: LeaveRecord,
-    onClick: () -> Unit
+    record: LeaveRecord
 ) {
     Card(
-        onClick = onClick,
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(0.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
