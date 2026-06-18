@@ -218,13 +218,13 @@ private fun LeaveCard(
                         Text(
                             text = "学号",
                             fontSize = 14.sp,
-                            color = Color(0xFF999999),
+                            color = Color(0xFF333333),
                             modifier = Modifier.width(70.dp)
                         )
                         Text(
                             text = record.studentId,
                             fontSize = 14.sp,
-                            color = Color(0xFF333333),
+                            color = Color(0xFF999999),
                             fontWeight = FontWeight.Normal
                         )
                     }
@@ -322,13 +322,13 @@ private fun InfoRow(label: String, value: String) {
         Text(
             text = label,
             fontSize = 14.sp,
-            color = Color(0xFF999999),
+            color = Color(0xFF333333),
             modifier = Modifier.width(70.dp)
         )
         Text(
             text = value,
             fontSize = 14.sp,
-            color = Color(0xFF333333)
+            color = Color(0xFF999999)
         )
     }
 }
