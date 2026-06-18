@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
@@ -79,15 +80,12 @@ fun EditLeaveScreen(
         )
     )
 
-    // TimePicker state (default to current record's time)
+    // TimePicker state
     val timePickerState = rememberTimePickerState(
         initialHour = 0,
         initialMinute = 0,
         is24Hour = true
     )
-
-    // Update TimePicker initial values when opening
-    var timePickerInitialized by remember { mutableStateOf(false) }
 
     // DatePicker dialog
     if (showDatePicker) {
@@ -102,11 +100,6 @@ fun EditLeaveScreen(
                         pendingDateMillis = millis
                     }
                     showDatePicker = false
-                    // Init time picker
-                    val timeStr = if (editingTimeField == TimeField.START) startTime else endTime
-                    val parsed = parseTimeParts(timeStr)
-                    timePickerState.hour = parsed.first
-                    timePickerState.minute = parsed.second
                     showTimePicker = true
                 }) {
                     Text("确定")
