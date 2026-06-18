@@ -85,10 +85,10 @@ fun LeaveListScreen(
                             ) {
                                 Text(
                                     text = "<",
-                                    fontSize = 20.sp,
-                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 24.sp,
+                                    fontWeight = FontWeight.Normal,
                                     color = Color(0xFF333333),
-                                    modifier = Modifier.padding(start = 16.dp, end = 8.dp)
+                                    modifier = Modifier.padding(start = 24.dp, end = 30.dp)
                                 )
                                 Text(
                                     text = "✕",
