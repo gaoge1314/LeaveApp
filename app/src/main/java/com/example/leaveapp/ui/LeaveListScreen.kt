@@ -71,31 +71,20 @@ fun LeaveListScreen(
                         title = {
                             Text(
                                 text = "日常请假列表",
+                                fontSize = 19.sp,
                                 fontWeight = FontWeight(600),
-                                fontSize = 17.sp,
                                 color = Color(0xFF333333),
                                 textAlign = TextAlign.Center,
                                 modifier = Modifier.fillMaxWidth()
                             )
                         },
                         navigationIcon = {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Text(
-                                    text = "<",
-                                    fontSize = 24.sp,
-                                    fontWeight = FontWeight.Normal,
-                                    color = Color(0xFF333333),
-                                    modifier = Modifier.padding(start = 24.dp, end = 30.dp)
-                                )
-                                Text(
-                                    text = "✕",
-                                    fontSize = 18.sp,
-                                    color = Color(0xFF333333),
-                                    modifier = Modifier.padding(end = 8.dp)
-                                )
-                            }
+                            Text(
+                                text = "✕",
+                                fontSize = 18.sp,
+                                color = Color(0xFF333333),
+                                modifier = Modifier.padding(start = 10.dp)
+                            )
                         },
                         actions = {
                             Text(
