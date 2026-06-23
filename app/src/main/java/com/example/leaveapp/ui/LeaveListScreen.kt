@@ -88,7 +88,7 @@ fun LeaveListScreen(
                         },
                         actions = {
                             Text(
-                                text = "•••",
+                                text = "⋮",
                                 fontSize = 16.sp,
                                 color = Color(0xFF333333),
                                 letterSpacing = 2.sp,
