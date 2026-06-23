@@ -1,9 +1,10 @@
 package com.example.leaveapp
 
 import android.os.Bundle
+import android.view.WindowInsets
+import android.view.WindowInsetsController
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -18,7 +19,11 @@ import com.example.leaveapp.ui.theme.LeaveAppTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        // 隐藏系统状态栏
+        window.insetsController?.let { controller ->
+            controller.hide(WindowInsets.Type.statusBars())
+            controller.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
         setContent {
             LeaveAppTheme {
                 var showEditScreen by remember { mutableStateOf(false) }
