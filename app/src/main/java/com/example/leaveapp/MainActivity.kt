@@ -25,6 +25,16 @@ class MainActivity : ComponentActivity() {
                 val viewModel: LeaveViewModel = viewModel(factory = LeaveViewModel.Factory)
                 val leaves by viewModel.allLeaves.collectAsState()
 
+                // 列表始终在后台保持，编辑界面覆盖在上面
+                LeaveListScreen(
+                    viewModel = viewModel,
+                    onRenewClick = {
+                        if (leaves.isNotEmpty()) {
+                            showEditScreen = true
+                        }
+                    }
+                )
+
                 if (showEditScreen && leaves.isNotEmpty()) {
                     EditLeaveScreen(
                         record = leaves.first(),
@@ -33,15 +43,6 @@ class MainActivity : ComponentActivity() {
                             showEditScreen = false
                         },
                         onBack = { showEditScreen = false }
-                    )
-                } else {
-                    LeaveListScreen(
-                        viewModel = viewModel,
-                        onRenewClick = {
-                            if (leaves.isNotEmpty()) {
-                                showEditScreen = true
-                            }
-                        }
                     )
                 }
             }

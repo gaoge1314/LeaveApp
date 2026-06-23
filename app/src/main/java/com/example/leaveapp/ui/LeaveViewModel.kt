@@ -22,7 +22,7 @@ class LeaveViewModel(
     val allLeaves: StateFlow<List<LeaveRecord>> = repository.allLeaves
         .map { list ->
             list.sortedWith(
-                compareByDescending<LeaveRecord> { it.statusTag == "待休假" }
+                compareByDescending<LeaveRecord> { it.statusTag.contains("待", ignoreCase = true) }
                     .thenByDescending { it.id }
             )
         }
