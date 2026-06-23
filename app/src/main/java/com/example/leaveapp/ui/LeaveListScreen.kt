@@ -81,15 +81,15 @@ fun LeaveListScreen(
                         navigationIcon = {
                             Text(
                                 text = "✕",
-                                fontSize = 18.sp,
+                                fontSize = 19.sp,
                                 color = Color(0xFF333333),
-                                modifier = Modifier.padding(start = 10.dp)
+                                modifier = Modifier.padding(start = 19.dp)
                             )
                         },
                         actions = {
                             Text(
                                 text = "⋮",
-                                fontSize = 16.sp,
+                                fontSize = 25.sp,
                                 color = Color(0xFF333333),
                                 letterSpacing = 2.sp,
                                 modifier = Modifier.padding(end = 16.dp)
