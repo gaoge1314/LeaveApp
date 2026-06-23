@@ -1,5 +1,6 @@
 package com.example.leaveapp
 
+import android.os.Build
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowInsetsController
@@ -19,10 +20,12 @@ import com.example.leaveapp.ui.theme.LeaveAppTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // 隐藏系统状态栏
-        window.insetsController?.let { controller ->
-            controller.hide(WindowInsets.Type.statusBars())
-            controller.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        // 隐藏系统状态栏（仅在 Android 11+ 支持）
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.let { controller ->
+                controller.hide(WindowInsets.Type.statusBars())
+                controller.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            }
         }
         setContent {
             LeaveAppTheme {
