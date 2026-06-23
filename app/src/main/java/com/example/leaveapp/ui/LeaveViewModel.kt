@@ -36,33 +36,33 @@ class LeaveViewModel(
                     LeaveRecord(
                         studentId = "2025909038",
                         name = "白明泽",
-                        startTime = "2025-09-21 13:00",
-                        endTime = "2025-09-21 16:00",
-                        duration = "0天3小时",
+                        startTime = "2026-06-20 09:00",
+                        endTime = "2026-06-20 14:00",
+                        duration = "0天5小时",
                         isRenew = false,
-                        reason = "校外：事假",
+                        reason = "校外:周末外出",
                         cancelledStatus = "",
-                        statusTag = "待休假"
+                        statusTag = "待销假"
                     ),
                     LeaveRecord(
                         studentId = "2025909038",
                         name = "白明泽",
-                        startTime = "2025-09-19 11:00",
-                        endTime = "2025-09-19 16:00",
-                        duration = "0天5小时",
+                        startTime = "2026-06-06 09:00",
+                        endTime = "2026-06-06 15:00",
+                        duration = "0天6小时",
                         isRenew = false,
-                        reason = "校外：事假",
+                        reason = "校外:周末外出",
                         cancelledStatus = "已销假",
                         statusTag = "已销假"
                     ),
                     LeaveRecord(
                         studentId = "2025909038",
                         name = "白明泽",
-                        startTime = "2025-09-18 09:00",
-                        endTime = "2025-09-18 12:00",
-                        duration = "0天3小时",
+                        startTime = "2026-06-06 09:00",
+                        endTime = "2026-06-06 15:00",
+                        duration = "0天6小时",
                         isRenew = false,
-                        reason = "校外：事假",
+                        reason = "校外:周末外出",
                         cancelledStatus = "已销假",
                         statusTag = "已销假"
                     )
