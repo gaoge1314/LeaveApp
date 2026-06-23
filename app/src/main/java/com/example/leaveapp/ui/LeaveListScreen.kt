@@ -69,32 +69,34 @@ fun LeaveListScreen(
                 topBar = {
                     TopAppBar(
                         title = {
-                            Text(
-                                text = "日常请假列表",
-                                fontSize = 19.sp,
-                                fontWeight = FontWeight.Medium,
-                                color = Color(0xFF333333),
-                                textAlign = TextAlign.Center,
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
                                 modifier = Modifier.fillMaxWidth()
-                            )
+                            ) {
+                                Text(
+                                    text = "✕",
+                                    fontSize = 20.sp,
+                                    color = Color(0xFF333333)
+                                )
+                                Spacer(modifier = Modifier.width(12.dp))
+                                Text(
+                                    text = "日常请假列表",
+                                    fontSize = 19.sp,
+                                    fontWeight = FontWeight.Medium,
+                                    color = Color(0xFF333333)
+                                )
+                                Spacer(modifier = Modifier.weight(1f))
+                                Text(
+                                    text = "⋮",
+                                    fontSize = 28.sp,
+                                    color = Color(0xFF333333),
+                                    letterSpacing = 2.sp,
+                                    modifier = Modifier.padding(end = 16.dp)
+                                )
+                            }
                         },
-                        navigationIcon = {
-                            Text(
-                                text = "✕",
-                                fontSize = 20.sp,
-                                color = Color(0xFF333333),
-                                modifier = Modifier.padding(start = 23.dp)
-                            )
-                        },
-                        actions = {
-                            Text(
-                                text = "⋮",
-                                fontSize = 28.sp,
-                                color = Color(0xFF333333),
-                                letterSpacing = 2.sp,
-                                modifier = Modifier.padding(end = 16.dp)
-                            )
-                        },
+                        navigationIcon = {},
+                        actions = {},
                         colors = TopAppBarDefaults.topAppBarColors(
                             containerColor = Color.White
                         )
