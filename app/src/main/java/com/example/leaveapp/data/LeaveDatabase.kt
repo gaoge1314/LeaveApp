@@ -20,7 +20,7 @@ abstract class LeaveDatabase : RoomDatabase() {
                     context.applicationContext,
                     LeaveDatabase::class.java,
                     "leave_database"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 instance
             }
