@@ -79,23 +79,12 @@ fun LeaveListScreen(
                             )
                         },
                         navigationIcon = {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Text(
-                                    text = "<",
-                                    fontSize = 24.sp,
-                                    fontWeight = FontWeight.Normal,
-                                    color = Color(0xFF333333),
-                                    modifier = Modifier.padding(start = 24.dp, end = 30.dp)
-                                )
-                                Text(
-                                    text = "✕",
-                                    fontSize = 18.sp,
-                                    color = Color(0xFF333333),
-                                    modifier = Modifier.padding(end = 8.dp)
-                                )
-                            }
+                            Text(
+                                text = "✕",
+                                fontSize = 18.sp,
+                                color = Color(0xFF333333),
+                                modifier = Modifier.padding(start = 10.dp)
+                            )
                         },
                         actions = {
                             Text(
